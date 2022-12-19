@@ -18,22 +18,22 @@ for (i in 1:length(bamfiles_li)){
 }
 save(bamqc_fi,file="bamqc_result")
 
-fragsize <- NULL
-for (i in 1:length(bamfiles_li)) {
-  print(i)
-  bamFile <- bamfiles_li[i]
-  fragsize[[i]] <- fragSizeDist(bamFile, bamFileLabels[i])
-  png(paste0("01.figure_qc/",bamFileLabels[i],".png"))
-  fragSizeDist(bamFile, bamFileLabels[i])
-  dev.off()
-}
-
-library(TxDb.Hsapiens.UCSC.hg38.knownGene)
-TSSs <- resize(genes(TxDb.Hsapiens.UCSC.hg38.knownGene), fix = "start", 1)
-TSSs
-
-gals <- lapply(bamfiles_li, function(bamfile){
-  readBamFile(bamFile=bamfile, tag=character(0),
-              which=GRanges("chr1", IRanges(1, 1e6)),
-              asMates=FALSE)
-})
+# fragsize <- NULL
+# for (i in 1:length(bamfiles_li)) {
+#   print(i)
+#   bamFile <- bamfiles_li[i]
+#   fragsize[[i]] <- fragSizeDist(bamFile, bamFileLabels[i])
+#   png(paste0("01.figure_qc/",bamFileLabels[i],".png"))
+#   fragSizeDist(bamFile, bamFileLabels[i])
+#   dev.off()
+# }
+# 
+# library(TxDb.Hsapiens.UCSC.hg38.knownGene)
+# TSSs <- resize(genes(TxDb.Hsapiens.UCSC.hg38.knownGene), fix = "start", 1)
+# TSSs
+# 
+# gals <- lapply(bamfiles_li, function(bamfile){
+#   readBamFile(bamFile=bamfile, tag=character(0),
+#               which=GRanges("chr1", IRanges(1, 1e6)),
+#               asMates=FALSE)
+# })
